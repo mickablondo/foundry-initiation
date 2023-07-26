@@ -13,6 +13,38 @@ Foundry consists of:
 
 https://book.getfoundry.sh/
 
+### Personal Doc
+```sh
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+
+forge --version
+forge 0.2.0 (0e33b3e 2023-07-26T00:20:00.310757040Z)
+
+forge init
+
+npm install @openzeppelin/contracts
+forge compile
+```
+
+Lancement d'une blockchain locale (anvil) et déploiement du contrat
+```sh
+anvil
+forge create PadelConnect --interactive
+```
+
+Sur blockchain Anvil temporaire :  
+```sh
+forge script script/DeployPadelConnect.s.sol
+```
+
+Sur blockchain locale Anvil :  
+```sh
+forge script script/DeployPadelConnect.s.sol --rpc-url http://127.0.0.1:8545 --private-key <PRIVATE_KEY> --broadcast
+
+cast send <CONTRACT_ADDRESS> "addManager((address))" "(<AN_ADRESSE>)" --rpc-url http://127.0.0.1:8545 --private-key <PRIVATE_KEY>
+cast call <CONTRACT_ADDRESS> "owner()" --rpc-url http://127.0.0.1:8545 --private-key <PRIVATE_KEY>
+```
 ## Usage
 
 ### Build
